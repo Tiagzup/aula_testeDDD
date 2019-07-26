@@ -41,26 +41,32 @@ public class ContaTeste {
 
 	@Test
 	public void testarSacarContaCorrente() {
+		double valorSacado = conta.sacarContaCorrente(100D);
 		conta.sacarContaCorrente(100D);
 		assertEquals(0D, conta.getSaldoContaCorrente(), 100D);
+		assertEquals(100D, valorSacado, 0D);
 	}
 
 	@Test
 	public void testarSacarContaPoupanca() {
+		double valorSacado = conta.sacarContaPoupanca(100D);
 		conta.sacarContaPoupanca(100D);
 		assertEquals(0D, conta.getSaldoContaPoupanca(), 100D);
+		assertEquals(100D, valorSacado, 0D);
 
 	}
 
 	@Test
 	public void testarTransferirContaCorrente() {
 		conta.transferirPoupancaParaCorrente(100D);
+		assertEquals(0D, conta.getSaldoContaPoupanca(),0D);
 		assertEquals(200D, conta.getSaldoContaCorrente(), 0D);
 	}
-
+	@Test
 	public void testarTransferirContaPoupanca() {
-		conta.transferirCorrenteParaPoupanca(0D);
-		assertEquals(100D, conta.getSaldoContaPoupanca(), 0);
+		conta.transferirCorrenteParaPoupanca(100D);
+		assertEquals(0D, conta.getSaldoContaCorrente(),0);
+		assertEquals(200D, conta.getSaldoContaPoupanca(), 0);
 	}
 
 }
